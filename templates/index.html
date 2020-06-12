@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="height: 60vh">
+    <div class="flex-center flex-column">
+        <form method="POST" action='calculate'>
+            {% csrf_token %}
+            {% if form %}
+            <div class="form-row">
+              <label for="country">From</label>
+                <div class="col">
+                        {{ form.fromCountry }}
+                </div>
+                <label for="country">To</label>
+                <div class="col">
+                         {{ form.toCountry }}
+                </div>
+              </div>
+            <div class="form-row">
+              <div class="col">
+                {{ form.amount }}
+              </div>
+              <div class="form-row">
+              <div class="col">
+              <button class="btn btn-primary btn-lg" type="submit"> Convert </button>
+            </div>
+              </div>
+              {% endif %}
+              {% if result %}
+              <div class="col">
+               <h1><label>result: {{ result }}</label></h1>
+               <a class="btn btn-primary btn-lg" href="/"> Back </a>
+              </div>
+              {% endif %}
+            </div>   
+          </form>
+    </div>
+  </div>
+{% endblock %}
